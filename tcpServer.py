@@ -5,19 +5,18 @@ import logging
 def main():
 
     print('Init the server and TCP protocol')
-
     logging.basicConfig(filename='LogFile_27', level=logging.INFO, format='%(message)s')
-
+    
     host = 'localhost'
     port = 5001
-
+    
     s = socket.socket()
     s.bind((host, port))
     s.listen(1)
+    
     connection, addr = s.accept()
-
     print('Connection from: ' + str(addr))
-
+    
     while True:
         client_data = connection.recv(1024)
         if not client_data:
@@ -39,22 +38,15 @@ def main():
                         logging.info('Longitude Data: {}'.format(str(parse_msg.data[3])))
                         logging.info('Altitude Data: {}'.format(str(parse_msg.data[8])))
                         print("************")
-                #print(str(client_data))
-                #print('Below this line is parsed NMEA-messages')
-                #parseMsg = pynmea2.parse(client_data)
-                #print(parseMsg)
-
-             #   client_data = str(client_data).upper()
-             #   print('Sending data to client ' + str(client_data))
-             #   connection.send(client_data)
+                print(str(client_data))
+                print('Below this line is parsed NMEA-messages')
+                parseMsg = pynmea2.parse(client_data)
+                print(parseMsg)
     connection.close()
     debugg_function()
 
-
 def debugg_function():
-    print("JEEEEEEW")
-
-
-
+    print("DEBUGG")
+    
 if __name__ == '__main__':
     main()
