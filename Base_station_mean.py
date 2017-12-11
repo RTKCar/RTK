@@ -13,7 +13,7 @@ def longitude_mean_value():
     longitude_list = []
     long_var = 'Longitude Data'
 
-    with open('LogFile_27') as f:
+    with open('LogFile_04') as f:
         f = f.readlines()
         # print(f)
 
@@ -39,7 +39,7 @@ def latitude_mean_value():
     latitude_list = []
     lat_var = 'Latitude Data'
 
-    with open('LogFile_27') as f:
+    with open('LogFile_04') as f:
         f = f.readlines()
         #print(f)
 
@@ -67,7 +67,7 @@ def altitude_mean_value():
     altitude_list = []
     alt_var = 'Altitude Data'
 
-    with open('LogFile_27') as f:
+    with open('LogFile_04') as f:
         f = f.readlines()
         # print(f)
 
