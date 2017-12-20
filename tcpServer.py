@@ -6,7 +6,7 @@ def main():
 
     print('Init the server and TCP protocol')
 
-    #logging.basicConfig(filename='LogFile_04', level=logging.INFO, format='%(message)s')
+    logging.basicConfig(filename='LogFile_RTK_test', level=logging.INFO, format='%(message)s')
 
     host = 'localhost'
     port = 2008
@@ -22,6 +22,7 @@ def main():
 
     while True:
         client_data = connection.recv(1024)
+        #print(client_data)
         if not client_data:
             print('No data from Client was recived')
             break
@@ -32,6 +33,8 @@ def main():
                 if str(nmea_data).startswith('$GPGGA'):
 
                     parse_msg = pynmea2.parse(str(nmea_data))
+                    fix_state = parse_msg.data[4]
+                    print(fix_state, " jalla")
 
                     print('-----DATA INFORMATION----')
                     print("Latitude: ", str(parse_msg.latitude))
@@ -40,9 +43,10 @@ def main():
                     print('-----      END     -----')
 
                     ##---------------Uncomment to logg the data--------------------------
-                    #logging.info('Latitude Data: {}'.format(str(parse_msg.latitude)))
-                    #logging.info('Longitude Data: {}'.format(str(parse_msg.longitude)))
-                    #logging.info('Altitude Data: {}'.format(str(parse_msg.altitude)))
+                    logging.info('Latitude Data: {}'.format(str(parse_msg.latitude)))
+                    logging.info('Longitude Data: {}'.format(str(parse_msg.longitude)))
+                    logging.info('Altitude Data: {}'.format(str(parse_msg.altitude)))
+                    logging.info('Fix State: {}'.format(str(fix_state)))
 
 
                     #---------------Send data back to client--------------------------

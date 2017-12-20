@@ -2,7 +2,7 @@
 import socket
 
 host = socket.gethostname()
-port = 2008
+port = 2007
 BUFFER_SIZE = 2000
 #MESSAGE = raw_input("tcpClientA: Enter message/ Enter exit:")
 print("Client B Connected")
